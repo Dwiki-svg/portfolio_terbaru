@@ -1,0 +1,117 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: $color-primary;
+    &__top {
+        display: flex;
+        justify-content: left;
+    }
+    & img {
+        width: 90px;
+        order: -1;
+        opacity: 0;
+        @include fadeIn-animation;
+        &:hover {
+            @include pulse-animation;
+            filter: drop-shadow(2px 2px 4px $color-btHover);
+        }
+    }
+    &__menu {
+        opacity: 0;
+        @include fadeIn-animation;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & ul {
+            display: flex;
+            margin-right: 5px;
+            & li {
+                margin-right: 20px;
+                list-style: none;
+                a {
+                    text-decoration: none;
+                    color: $color-font;
+                    font-size: 1.1rem;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+    &__cv {
+        padding: 20px 30px;
+        border-radius: 10px;
+        background-color: $color-btn;
+        text-decoration: none;
+        color: $color-font;
+        &:hover {
+            @include btn-hover;
+        }
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+@media screen and (min-width: 1920px) {
+    .header {
+        justify-content: space-around;
+    }
+}
+@media screen and (max-width: 768px) {
+    .header {
+        display: grid;
+        grid-template: 1fr / repeat(3, 1fr);
+        font-size: 0.9rem;
+        &__top {
+            grid-column: 1 / 2;
+        }
+        & img {
+            width: 90px;
+            grid-column: 2 / 3;
+            place-self: center;
+            order: 0;
+        }
+        &__menu {
+            & nav {
+                display: none;
+            }
+        }
+        &__cv {
+            grid-column: 3 / 4;
+            place-self: right;
+        }
+    }
+}
+@media screen and (max-width: 414px) {
+    .header {
+        font-size: 0.9rem;
+        padding: 15px 30px;
+        &__top {
+            grid-column: 1 / 2;
+        }
+        & img {
+            width: 70px;
+            grid-column: 2 / 3;
+            place-self: center;
+            order: 0;
+        }
+        &__menu {
+            justify-content: flex-end;
+        }
+        &__cv {
+            padding: 10px 20px;
+            margin-left: 25px;
+            font-size: 0.8rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    }
+}

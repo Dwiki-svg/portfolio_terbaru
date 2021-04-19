@@ -1,0 +1,114 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.hero {
+    width: 100vw;
+    height: auto;
+    display: grid;
+    grid-template: 1fr / repeat(2, 55% 45%);
+    background-color: $color-primary;
+    color: $color-font;
+    &__titles {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 10px 35px;
+        text-transform: uppercase;
+        opacity: 0;
+        @include fadeIn-animation;
+        &__moving {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            @include title-animation;
+        }
+        &__social {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        & span {
+            font-size: 1.6rem;
+            color: $color-btn;
+            font-weight: bold;
+        }
+        & p {
+            font-size: 1.6rem;
+        }
+        & h1 {
+            padding-top: 5px;
+            font-size: 2.8rem;
+        }
+        & h2 {
+            padding-top: 5px;
+            font-size: 1.1rem;
+            text-transform: none;
+        }
+    }
+    &__img {
+        justify-self: start;
+        & img {
+            width: 35rem;
+            @include fadeIn-animation;
+            border-radius: 30%;
+            filter: drop-shadow(2px 4px 4px #585858);
+        }
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+@media screen and (max-width: 768px) {
+    .hero {
+        grid-template: 1fr / repeat(2, 1fr);
+
+        &__img {
+            img {
+                width: 28rem;
+            }
+        }
+        &__titles {
+            padding: 10px 10px 10px 50px;
+            align-items: center;
+            &__social {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            & span {
+                font-size: 1.2rem;
+                margin-right: 5px;
+            }
+            & p {
+                font-size: 1.2rem;
+            }
+            & h2 {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .hero {
+        grid-template: 1fr / 1fr;
+        padding: 60px 20px;
+        &__titles {
+            padding: 0px;
+            align-items: center;
+            place-self: center;
+            & h1,
+            h2 {
+                text-align: center;
+            }
+        }
+        &__img {
+            display: none;
+        }
+    }
+}

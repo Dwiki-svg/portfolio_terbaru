@@ -1,0 +1,121 @@
+@import "../../styles/variables";
+
+.conter {
+    max-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: $color-primary;
+    &__top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__title {
+            display: inline-flex;
+            margin-bottom: 30px;
+            border-bottom: 3px solid $color-primary;
+            & h1 {
+                padding: 15px 15px;
+                font-size: 1.8rem;
+            }
+        }
+    }
+    &__items {
+        max-width: 80%;
+        display: grid;
+        grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+        grid-row-gap: 15px;
+        padding: 20px;
+        &__jobs {
+            width: 85%;
+            place-self: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 2px 9px $color-secundary;
+            border-radius: 20px;
+            transition: 250ms all;
+            &:hover {
+                box-shadow: 1px 4px 19px $color-secundary;
+                p {
+                    opacity: 1;
+                }
+                & img {
+                    filter: drop-shadow(2px 4px 4px #585858);
+                }
+            }
+            & p {
+                opacity: 0.7;
+            }
+            &__icons {
+                margin: 10px;
+                & img {
+                    width: 4rem;
+                    margin: 20px;
+                }
+            }
+        }
+    }
+}
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================*/
+
+@media screen and (max-width: 1024px) {
+    .container {
+        &__items {
+            max-width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 25px;
+        &__items {
+            grid-row-gap: 20px;
+            &__jobs {
+                height: 100%;
+                flex-direction: column;
+                align-items: center;
+                & p {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .container {
+        padding: 15px;
+        font-size: 1rem;
+        &__items {
+            grid-template: repeat(2, auto) / 1fr;
+            grid-row-gap: 25px;
+            &__jobs {
+                & p {
+                    text-align: center;
+                }
+                &__icons {
+                    & img {
+                        margin: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
